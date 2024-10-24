@@ -1,25 +1,27 @@
 CXX = g++
-CXXFLAGS = -Iinclude -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS = -Iinclude -lsfml-graphics -lsfml-window -lsfml-system -std=c++17
 SRCDIR = src
 BINDIR = bin
 TARGET = $(BINDIR)/sgu
 INCLUDE = include
 
-SRC = $(wildcard $(SRCDIR)/**/*.cpp)
-NODYNAMIC = $(SRCDIR)/main.cpp
-OBJ = $(SRC:$(SRCDIR)/%.cpp=$(BINDIR)/%.o)
+SRC = $(shell find $(SRCDIR) -name "*.cpp")
+OBJ = $(patsubst $(SRCDIR)/%.cpp, $(BINDIR)/%.o, $(SRC))
+
+MAIN_OBJ = $(BINDIR)/main.o
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CXX) $(NODYNAMIC) -o $@ $^ $(CXXFLAGS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(OBJ) -o $@ $(CXXFLAGS)
 
 $(BINDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(dir $@) # Crear directorio si no existe
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(BINDIR)/*.o $(TARGET)
+	rm -rf $(BINDIR)
 
 .PHONY: all clean
 

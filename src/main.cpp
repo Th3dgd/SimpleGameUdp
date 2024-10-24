@@ -1,20 +1,16 @@
-// simple game udp created by th3dgd
+// simple game udp created by Th3dgd
 // https://github.com/Th3dgd
 
-#include "../include/game/windowsgu.h"
-
-void drawTest(sf::RenderWindow& window) {
-    sf::CircleShape shape(50);
-    shape.setFillColor(sf::Color::Green);
-    shape.setPosition(200, 150);
-
-    window.draw(shape);
-}
+#include "game/window/sgu.h"
+#include "game/init/initializer.h"
 
 int main () {
     WindowSGU windowsgu;
+    Initializer initializer;
 
-    windowsgu.open(drawTest);
+    windowsgu.open([&initializer](sf::RenderWindow& window) {
+        initializer.init(window);
+    });
 
     return 0;
 }

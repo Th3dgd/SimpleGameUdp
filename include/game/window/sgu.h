@@ -1,5 +1,5 @@
-#ifndef WINDOWSGU_H
-#define WINDOWSGU_H
+#ifndef SGU_H
+#define SGU_H
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
