@@ -8,13 +8,13 @@
 class Menu {
 public:
     Menu();
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window, int index);
     void MoveUp();
     void MoveDown();
-    int selectedItemIndex = 0;
     int GetPressedItem();
 
 private:
+    static int selectedItemIndex; 
     std::vector<sf::Text> menuText;
     std::vector<std::string> options;
     sf::Font font;

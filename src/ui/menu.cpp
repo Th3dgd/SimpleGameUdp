@@ -1,4 +1,7 @@
 #include "ui/menu.h"
+#include <iostream>
+
+int Menu::selectedItemIndex = 0;
 
 Menu::Menu() {
     float width = 800, height = 600;
@@ -25,17 +28,13 @@ Menu::Menu() {
 
 void Menu::MoveUp() {
     if (selectedItemIndex - 1 >= 0) {
-        menuText[selectedItemIndex].setFillColor(sf::Color::White);
         selectedItemIndex--;
-        menuText[selectedItemIndex].setFillColor(sf::Color::Red);
     }
 }
 
 void Menu::MoveDown() {
     if (selectedItemIndex + 1 < options.size()) {
-        menuText[selectedItemIndex].setFillColor(sf::Color::White);
         selectedItemIndex++;
-        menuText[selectedItemIndex].setFillColor(sf::Color::Red);
     }
 }
 
@@ -43,8 +42,10 @@ int Menu::GetPressedItem() {
     return selectedItemIndex;
 }
 
-void Menu::draw(sf::RenderWindow& window) {
-    for (size_t i = 0; i < menuText.size(); i++) {
+void Menu::draw(sf::RenderWindow& window, int index) {
+    for (size_t i = 0; i < options.size(); i++) {
+        menuText[i].setFillColor(sf::Color::White);
+        menuText[selectedItemIndex].setFillColor(sf::Color::Red);
         window.draw(menuText[i]);
     }
 }

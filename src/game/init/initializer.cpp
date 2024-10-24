@@ -8,6 +8,5 @@ Shape shapes;
 Menu menu;
 
 void Initializer::init(sf::RenderWindow& window) {
-    menu.draw(window);
-    /*shapes.draw(window);*/
+    menu.draw(window, menu.GetPressedItem());
 }
