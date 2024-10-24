@@ -10,6 +10,8 @@ int main () {
 
     windowsgu.open([&initializer](sf::RenderWindow& window) {
         initializer.init(window);
+    }, [&initializer](sf::Event& event) {
+        initializer.events(event);
     });
 
     return 0;

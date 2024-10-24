@@ -1,11 +1,8 @@
 #include "game/window/sgu.h"
-#include "game/keyboard/MenuInput.h"
-
-MenuInput menuInput;
 
 WindowSGU::WindowSGU() : window(sf::VideoMode(800, 600), "SGU") {}
 
-int WindowSGU::open(std::function<void(sf::RenderWindow&)> callback){
+int WindowSGU::open(std::function<void(sf::RenderWindow&)> callback, std::function<void(sf::Event&)> callback2){
     while (window.isOpen())
     {
         sf::Event event;
@@ -13,8 +10,8 @@ int WindowSGU::open(std::function<void(sf::RenderWindow&)> callback){
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-
-            menuInput.init(event);
+            
+            callback2(event);
         }
 
         window.clear();

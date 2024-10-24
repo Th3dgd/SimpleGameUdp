@@ -9,6 +9,7 @@ class Initializer {
 public:
     Initializer();
     void init(sf::RenderWindow& window);
+    void events(sf::Event& event);
 };
 
 #endif

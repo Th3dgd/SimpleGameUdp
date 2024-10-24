@@ -9,7 +9,7 @@
 class WindowSGU {
 public:
     WindowSGU();
-    int open(std::function<void(sf::RenderWindow&)> callback);
+    int open(std::function<void(sf::RenderWindow&)> callback, std::function<void(sf::Event&)> callback2);
     sf::RenderWindow window;
 };
 
