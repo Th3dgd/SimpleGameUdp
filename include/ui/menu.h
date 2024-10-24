@@ -12,9 +12,11 @@ public:
     void MoveUp();
     void MoveDown();
     int GetPressedItem();
-
+    int GetActuallyDrawMenu();
+    void setActuallyDrawMenu(int index);
 private:
-    static int selectedItemIndex; 
+    static int selectedItemIndex;
+    static int actuallyDrawMenu;
     std::vector<sf::Text> menuText;
     std::vector<std::string> options;
     sf::Font font;

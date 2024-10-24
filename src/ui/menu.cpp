@@ -2,12 +2,12 @@
 #include <iostream>
 
 int Menu::selectedItemIndex = 0;
+int Menu::actuallyDrawMenu = 0;
 
 Menu::Menu() {
     float width = 800, height = 600;
     
-    if (!font.loadFromFile("arial.ttf")) {
-    }
+    if (!font.loadFromFile("arial.ttf")) {}
 
     options.push_back("Unirse a Sala");
     options.push_back("Crear Sala");
@@ -40,6 +40,14 @@ void Menu::MoveDown() {
 
 int Menu::GetPressedItem() {
     return selectedItemIndex;
+}
+
+int Menu::GetActuallyDrawMenu() {
+    return actuallyDrawMenu;
+}
+
+void Menu::setActuallyDrawMenu(int index) {
+    actuallyDrawMenu = index + 1;
 }
 
 void Menu::draw(sf::RenderWindow& window, int index) {
