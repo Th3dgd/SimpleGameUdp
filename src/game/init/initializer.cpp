@@ -1,9 +1,12 @@
+/* Game includes */
 #include "game/init/initializer.h"
 #include "game/draw/shape.h"
+#include "game/keyboard/MenuInput.h"
+
+/* UI includes Views */
 #include "ui/menu.h"
 #include "ui/views/create.h"
 #include "ui/views/join.h"
-#include "game/keyboard/MenuInput.h"
 
 Initializer::Initializer() {}
 
